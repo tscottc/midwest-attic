@@ -1,254 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Let's Make It Legal — Wedding Officiant | Detroit, Michigan</title>
-<meta name="description" content="Let's Make It Legal — Elopements, short notice, spur of the moment. A Michigan wedding officiant for people who just want to seal the deal.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soft Stack Studio — Friendly websites for real businesses</title>
+<meta name="description" content="Soft Stack Studio builds clean, friendly, working websites for small businesses and the people who run them.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --teal: #2A9D8F;
-    --mustard: #E9C46A;
-    --terracotta: #E76F51;
-    --terracotta-deep: #C95A3D;
-    --mauve: #9B72AA;
-    --bg: #FDF6EC;
-    --ink: #1C1917;
-    --ink-mid: #3D3833;
-    --ink-faint: #9C9285;
+  :root{
+    --sage:#A8B59A;
+    --sage-deep:#7C8A6E;
+    --clay:#C9A48A;
+    --clay-deep:#B5896B;
+    --teal:#8FB0A9;
+    --teal-deep:#5E817A;
+    --sand:#DCD3C0;
+    --slate:#8A93A1;
+    --ink:#3E4438;
+    --ink-soft:#5E6557;
+    --card:#FBF8F1;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
+ 
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+ 
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background-color:#cfd6c2;
+    background-image:
+      repeating-linear-gradient(0deg,rgba(110,125,98,.10) 0 1px,transparent 1px 22px),
+      repeating-linear-gradient(90deg,rgba(110,125,98,.10) 0 1px,transparent 1px 22px),
+      repeating-linear-gradient(0deg,rgba(110,125,98,.06) 0 1px,transparent 1px 66px),
+      repeating-linear-gradient(90deg,rgba(110,125,98,.06) 0 1px,transparent 1px 66px);
   }
-
-  .color-bar {
-    display: flex;
-    height: 5px;
+ 
+  /* full-bleed bands: each .band spans the whole width, inner wrapper centers content */
+  .band{width:100%}
+  .wrap{max-width:1180px;margin:0 auto;padding-left:clamp(20px,5vw,56px);padding-right:clamp(20px,5vw,56px)}
+ 
+  /* HEADER */
+  .band-head{background:var(--sage-deep);color:#fff}
+  .band-head .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px}
+  .brand{display:flex;align-items:center;gap:13px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.4rem;color:#fff;text-decoration:none}
+  .mark{
+    width:44px;height:44px;border-radius:12px;
+    background:var(--sand);color:var(--ink);box-shadow:inset 0 0 0 2px rgba(62,68,56,.12);
+    display:grid;place-items:center;font-size:1.4rem;
   }
-  .color-bar span { flex: 1; }
-  .cb-teal       { background: var(--teal); }
-  .cb-mustard    { background: var(--mustard); }
-  .cb-terracotta { background: var(--terracotta); }
-  .cb-mauve      { background: var(--mauve); }
-
-  /* ===== LAYOUT ===== */
-  .page {
-    min-height: calc(100vh - 10px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 5rem 2rem 4rem;
-    max-width: 560px;
-    margin: 0 auto;
+  .brand small{display:block;font-family:'Nunito',sans-serif;font-weight:600;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;opacity:.8;margin-top:2px}
+  nav{display:flex;gap:28px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem}
+  nav a{color:rgba(255,255,255,.82);text-decoration:none;transition:color .2s}
+  nav a:hover{color:#fff}
+ 
+  /* HERO band — wide, edge to edge */
+  .band-hero{background:var(--teal)}
+  .band-hero .wrap{
+    display:flex;align-items:center;justify-content:space-between;gap:40px;
+    padding-top:clamp(40px,7vw,72px);padding-bottom:clamp(40px,7vw,72px);
   }
-
-  /* ===== EYEBROW ===== */
-  .tag {
-    font-size: 0.62rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.45em;
-    color: var(--teal);
-    margin-bottom: 2rem;
+  .hero-copy{flex:1 1 460px;color:#fff}
+  .eyebrow{
+    display:inline-block;font-family:'Fredoka',sans-serif;font-weight:600;
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    background:rgba(255,255,255,.22);color:#fff;padding:8px 18px;border-radius:100px;margin-bottom:22px;
   }
-
-  /* ===== HEADLINE ===== */
-  h1 {
-    font-family: 'Newsreader', serif;
-    font-size: clamp(3rem, 9vw, 5.75rem);
-    font-weight: 300;
-    font-style: italic;
-    letter-spacing: -0.02em;
-    line-height: 1.0;
-    color: var(--ink);
-    margin-bottom: 2.75rem;
+  h1{
+    font-family:'Fredoka',sans-serif;font-weight:700;color:#fff;
+    font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:18px;
   }
-  h1 em {
-    font-style: normal;
-    color: var(--terracotta);
+  h1 .pop{color:var(--sand)}
+  .sub{font-size:clamp(1.02rem,2.2vw,1.22rem);color:rgba(255,255,255,.92);max-width:520px;margin-bottom:30px;line-height:1.6}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;
+    padding:14px 30px;border-radius:100px;text-decoration:none;cursor:pointer;border:none;
+    transition:transform .15s ease,box-shadow .2s ease;
   }
-
-  /* ===== PITCH ===== */
-  .pitch {
-    font-size: 1.05rem;
-    line-height: 1.85;
-    color: var(--ink-mid);
-    font-weight: 300;
-    margin-bottom: 1.75rem;
-    text-align: left;
+  .btn-primary{background:var(--clay-deep);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.14)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.2)}
+  .btn-ghost{background:var(--card);color:var(--ink)}
+  .btn-ghost:hover{transform:translateY(-3px)}
+ 
+  /* hero art block */
+  .hero-art{
+    flex:0 0 280px;height:240px;border-radius:24px;
+    background:var(--card);box-shadow:0 16px 40px rgba(0,0,0,.16);
+    display:grid;place-items:center;
   }
-
-  /* ===== OCCASIONS ===== */
-  .occasions {
-    display: flex;
-    gap: 0.5rem 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 3.25rem;
+  .hero-art .glyph{font-size:5rem;color:var(--teal-deep);font-family:'Fredoka',sans-serif;font-weight:700}
+ 
+  /* SERVICES band */
+  .band-serv{background:var(--sand)}
+  .band-serv .wrap{padding-top:clamp(40px,6vw,60px);padding-bottom:clamp(40px,6vw,60px)}
+  .serv-head{text-align:center;font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:34px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    background:var(--card);border-radius:20px;padding:26px 24px;
+    border:1px solid rgba(124,138,110,.2);transition:transform .2s ease;
   }
-  .occasions span {
-    font-size: 0.72rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.25em;
-    color: var(--ink-faint);
+  .card:hover{transform:translateY(-5px)}
+  .card .ico{font-size:1.8rem;margin-bottom:10px;display:block;color:var(--sage-deep)}
+  .card h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.15rem;margin-bottom:6px}
+  .card p{font-size:.95rem;color:var(--ink-soft);line-height:1.55}
+ 
+  /* FOOTER band */
+  .band-foot{background:var(--clay);color:#fff;margin-top:auto}
+  .band-foot .wrap{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    padding-top:24px;padding-bottom:24px;font-size:.9rem;
   }
-  .occasions span + span::before {
-    content: '·';
-    margin-right: 1.5rem;
+  .band-foot a{color:#fff;text-decoration:underline;font-weight:700}
+  .foot-brand{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem}
+ 
+  @media (max-width:780px){
+    nav{display:none}
+    .band-hero .wrap{flex-direction:column;text-align:center}
+    .hero-copy{flex-basis:auto}
+    .cta-row{justify-content:center}
+    .hero-art{flex-basis:auto;width:100%;max-width:280px}
   }
-
-  /* ===== DIVIDER ===== */
-  .rule {
-    width: 40px;
-    height: 2px;
-    background: var(--mustard);
-    margin: 0 auto 3.25rem;
-  }
-
-  /* ===== CTA ===== */
-  .cta {
-    display: inline-block;
-    font-family: 'Newsreader', serif;
-    font-style: italic;
-    font-size: 1.15rem;
-    font-weight: 300;
-    padding: 0.85rem 2.6rem;
-    background: var(--terracotta);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 3px;
-    transition: background 0.2s ease;
-    margin-bottom: 3.5rem;
-  }
-  .cta:hover { background: var(--terracotta-deep); }
-
-  /* ===== FOOTER META ===== */
-  .meta {
-    display: flex;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    border-top: 1px solid rgba(28,25,23,0.08);
-    padding-top: 2rem;
-    width: 100%;
-  }
-  .meta-item {
-    text-align: center;
-  }
-  .meta-label {
-    font-size: 0.52rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.4em;
-    color: var(--ink-faint);
-    margin-bottom: 0.25rem;
-  }
-  .meta-value {
-    font-family: 'Newsreader', serif;
-    font-size: 0.98rem;
-    color: var(--ink-mid);
-  }
-  .meta-value a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid var(--mustard);
-    padding-bottom: 1px;
-    transition: border-color 0.2s;
-  }
-  .meta-value a:hover { border-color: var(--terracotta); }
-
-  /* ===== BOTTOM FOOTER ===== */
-  footer {
-    text-align: center;
-    padding: 1.5rem 2rem;
-  }
-  footer p {
-    font-size: 0.6rem;
-    color: var(--ink-faint);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  footer a {
-    color: var(--ink-faint);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(156,146,133,0.4);
-    padding-bottom: 1px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  footer a:hover {
-    color: var(--ink-mid);
-    border-color: var(--ink-mid);
+  @media (max-width:600px){
+    .cards{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
-
-<div class="color-bar">
-  <span class="cb-teal"></span>
-  <span class="cb-mustard"></span>
-  <span class="cb-terracotta"></span>
-  <span class="cb-mauve"></span>
-</div>
-
-<div class="page">
-
-  <div class="tag">Michigan Wedding Officiant</div>
-
-  <h1>Let's Make It <em>Legal</em></h1>
-
-  <p class="pitch">
-    No need to make this complicated. He's a certified officiant in the state of Michigan — the guy people call when they just want to seal the deal. No big production weddings. Just the part where you actually get married.
-  </p>
-
-  <div class="occasions">
-    <span>Elopements</span>
-    <span>Short notice</span>
-    <span>Spur of the moment</span>
-    <span>On a Tuesday</span>
-  </div>
-
-  <div class="rule"></div>
-
-  <a href="mailto:info@spaceflotsam.com?subject=Inquiry%3A%20Lets%20Make%20It%20Legal" class="cta">Get in touch</a>
-
-  <div class="meta">
-    <div class="meta-item">
-      <div class="meta-label">Email</div>
-      <div class="meta-value"><a href="mailto:info@spaceflotsam.com?subject=Inquiry%3A%20Lets%20Make%20It%20Legal">info@spaceflotsam.com</a></div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Based In</div>
-      <div class="meta-value">Detroit, Michigan</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Serving</div>
-      <div class="meta-value">All of Michigan</div>
+ 
+  <div class="band band-head">
+    <div class="wrap">
+      <a class="brand" href="#"><span class="mark">&#9635;</span><span>Soft Stack Studio<small>Design &middot; Build &middot; Care</small></span></a>
+      <nav>
+        <a href="#work">What we do</a>
+        <a href="#hello">Say hi</a>
+      </nav>
     </div>
   </div>
-
-</div>
-
-<div class="color-bar">
-  <span class="cb-mauve"></span>
-  <span class="cb-terracotta"></span>
-  <span class="cb-mustard"></span>
-  <span class="cb-teal"></span>
-</div>
-
-<footer>
-  <p>&copy; 2026 Let's Make It Legal &middot; Detroit, MI &middot; Site by <a href="https://spaceflotsam.com" target="_blank" rel="noopener">SJ Studios</a></p>
-</footer>
-
+ 
+  <div class="band band-hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">Friendly websites, built right</span>
+        <h1>We make the web feel a little more <span class="pop">human</span>.</h1>
+        <p class="sub">Soft Stack Studio builds clean, working websites for small businesses and the good people who run them. No jargon, no drama, just sites that load fast and look like you.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#hello">Start a project</a>
+          <a class="btn btn-ghost" href="#work">See what we do</a>
+        </div>
+      </div>
+      <div class="hero-art"><span class="glyph">&#9635;</span></div>
+    </div>
+  </div>
+ 
+  <div class="band band-serv" id="work">
+    <div class="wrap">
+      <h2 class="serv-head">What we do</h2>
+      <div class="cards">
+        <div class="card">
+          <span class="ico">&#9638;</span>
+          <h3>Design</h3>
+          <p>A look that fits your business, not a template everyone else is wearing.</p>
+        </div>
+        <div class="card">
+          <span class="ico">&#9881;</span>
+          <h3>Build</h3>
+          <p>Fast, mobile-friendly sites that work the way you'd expect them to.</p>
+        </div>
+        <div class="card">
+          <span class="ico">&#9776;</span>
+          <h3>Support</h3>
+          <p>Plain-language help when you need a change. We pick up the phone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="band band-foot" id="hello">
+    <div class="wrap">
+      <span class="foot-brand">Soft Stack Studio</span>
+      <span>Want one of these? <a href="mailto:hello@softstackstudio.com">hello@softstackstudio.com</a></span>
+    </div>
+  </div>
+ 
 </body>
 </html>
+ 
