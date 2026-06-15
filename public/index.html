@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Midwest Attic — Friendly websites for real businesses</title>
-<meta name="description" content="Midwest Attic builds clean, friendly, working websites for small businesses and the people who run them.">
+<title>Midwest Attic — Digital Relations</title>
+<meta name="description" content="Web design and online presence work for small businesses and people who want to look like themselves on the internet. Based in Michigan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -22,10 +22,10 @@
     --ink-soft:#5E6557;
     --card:#FBF8F1;
   }
- 
+
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
- 
+
   body{
     font-family:'Nunito',system-ui,sans-serif;
     color:var(--ink);
@@ -39,11 +39,11 @@
       repeating-linear-gradient(0deg,rgba(110,125,98,.06) 0 1px,transparent 1px 66px),
       repeating-linear-gradient(90deg,rgba(110,125,98,.06) 0 1px,transparent 1px 66px);
   }
- 
+
   /* full-bleed bands: each .band spans the whole width, inner wrapper centers content */
   .band{width:100%}
   .wrap{max-width:1180px;margin:0 auto;padding-left:clamp(20px,5vw,56px);padding-right:clamp(20px,5vw,56px)}
- 
+
   /* HEADER */
   .band-head{background:var(--sage-deep);color:#fff}
   .band-head .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px}
@@ -57,7 +57,7 @@
   nav{display:flex;gap:28px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem}
   nav a{color:rgba(255,255,255,.82);text-decoration:none;transition:color .2s}
   nav a:hover{color:#fff}
- 
+
   /* HERO band — wide, edge to edge */
   .band-hero{background:var(--teal)}
   .band-hero .wrap{
@@ -86,7 +86,7 @@
   .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.2)}
   .btn-ghost{background:var(--card);color:var(--ink)}
   .btn-ghost:hover{transform:translateY(-3px)}
- 
+
   /* hero art block */
   .hero-art{
     flex:0 0 280px;height:240px;border-radius:24px;
@@ -94,11 +94,16 @@
     display:grid;place-items:center;
   }
   .hero-art .glyph{font-size:5rem;color:var(--teal-deep);font-family:'Fredoka',sans-serif;font-weight:700}
- 
+
+  /* STRIP band */
+  .band-strip{background:var(--sage-deep);color:#fff}
+  .band-strip .wrap{padding-top:18px;padding-bottom:18px;font-size:.95rem;font-weight:600;line-height:1.6}
+
   /* SERVICES band */
   .band-serv{background:var(--sand)}
   .band-serv .wrap{padding-top:clamp(40px,6vw,60px);padding-bottom:clamp(40px,6vw,60px)}
-  .serv-head{text-align:center;font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:34px}
+  .serv-head{text-align:center;font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:10px}
+  .serv-sub{text-align:center;font-size:.97rem;color:var(--ink-soft);margin-bottom:34px}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .card{
     background:var(--card);border-radius:20px;padding:26px 24px;
@@ -108,7 +113,7 @@
   .card .ico{font-size:1.8rem;margin-bottom:10px;display:block;color:var(--sage-deep)}
   .card h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.15rem;margin-bottom:6px}
   .card p{font-size:.95rem;color:var(--ink-soft);line-height:1.55}
- 
+
   /* FOOTER band */
   .band-foot{background:var(--clay);color:#fff;margin-top:auto}
   .band-foot .wrap{
@@ -116,14 +121,17 @@
     padding-top:24px;padding-bottom:24px;font-size:.9rem;
   }
   .band-foot a{color:#fff;text-decoration:underline;font-weight:700}
-  .foot-brand{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem}
- 
+  .foot-brand{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:2px}
+  .foot-dba{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:8px}
+  .foot-note{font-size:.85rem;opacity:.8;text-align:right}
+
   @media (max-width:780px){
     nav{display:none}
     .band-hero .wrap{flex-direction:column;text-align:center}
     .hero-copy{flex-basis:auto}
     .cta-row{justify-content:center}
     .hero-art{flex-basis:auto;width:100%;max-width:280px}
+    .foot-note{text-align:left}
   }
   @media (max-width:600px){
     .cards{grid-template-columns:1fr}
@@ -131,62 +139,72 @@
 </style>
 </head>
 <body>
- 
+
   <div class="band band-head">
     <div class="wrap">
-      <a class="brand" href="#"><span class="mark">&#9635;</span><span>Midwest Attic<small>Design &middot; Build &middot; Care</small></span></a>
+      <a class="brand" href="#"><span class="mark">&#9635;</span><span>Midwest Attic<small>Digital Relations</small></span></a>
       <nav>
-        <a href="#work">What we do</a>
-        <a href="#hello">Say hi</a>
+        <a href="#work">Work</a>
+        <a href="#hello">Get in touch</a>
       </nav>
     </div>
   </div>
- 
+
   <div class="band band-hero">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">Friendly websites, built right</span>
-        <h1>We make the web feel a little more <span class="pop">human</span>.</h1>
-        <p class="sub">Midwest Attic builds clean, working websites for small businesses and the good people who run them. No jargon, no drama, just sites that load fast and look like you.</p>
+        <span class="eyebrow">Web design &amp; online presence &mdash; Michigan</span>
+        <h1>Look like <span class="pop">yourself</span> on the internet.</h1>
+        <p class="sub">Your business shouldn't look like it was assembled from a kit. Midwest Attic builds web presence that fits — custom to who you actually are, built by one person who sees the work through.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#hello">Start a project</a>
-          <a class="btn btn-ghost" href="#work">See what we do</a>
+          <a class="btn btn-primary" href="#hello">Start a conversation</a>
+          <a class="btn btn-ghost" href="#work">What I do</a>
         </div>
       </div>
       <div class="hero-art"><span class="glyph">&#9635;</span></div>
     </div>
   </div>
- 
+
+  <div class="band band-strip">
+    <div class="wrap">
+      One person does the work. Nobody to hand you off to, nobody to blame things on. You'll always know exactly who's on your project.
+    </div>
+  </div>
+
   <div class="band band-serv" id="work">
     <div class="wrap">
-      <h2 class="serv-head">What we do</h2>
+      <h2 class="serv-head">What I do</h2>
+      <p class="serv-sub">Online presence work for small businesses and individuals. Not a package. Not a template. Not a rush job.</p>
       <div class="cards">
         <div class="card">
           <span class="ico">&#9638;</span>
-          <h3>Design</h3>
-          <p>A look that fits your business, not a template everyone else is wearing.</p>
+          <h3>Web Design</h3>
+          <p>Sites built from scratch around what you actually need. Fast, clean, mobile-ready — and nothing that screams "free theme."</p>
         </div>
         <div class="card">
           <span class="ico">&#9881;</span>
-          <h3>Build</h3>
-          <p>Fast, mobile-friendly sites that work the way you'd expect them to.</p>
+          <h3>Online Presence</h3>
+          <p>Getting found matters. So does what people find when they look. I work on both — search, profiles, listings, the whole picture.</p>
         </div>
         <div class="card">
           <span class="ico">&#9776;</span>
-          <h3>Support</h3>
-          <p>Plain-language help when you need a change. We pick up the phone.</p>
+          <h3>Ongoing Care</h3>
+          <p>Sites drift. Things break. I stay around after launch so you're not on your own the moment something needs updating.</p>
         </div>
       </div>
     </div>
   </div>
- 
+
   <div class="band band-foot" id="hello">
     <div class="wrap">
-      <span class="foot-brand">Midwest Attic</span>
-      <span>Want one of these? <a href="mailto:hello@softstackstudio.com">hello@softstackstudio.com</a></span>
+      <div>
+        <div class="foot-brand">Midwest Attic</div>
+        <div class="foot-dba">A DBA of Space Junk Studios &mdash; Michigan</div>
+        <span>Ready to talk? <a href="mailto:hello@midwestattic.com">hello@midwestattic.com</a></span>
+      </div>
+      <div class="foot-note">Real work.<br>One person.<br>No drama.</div>
     </div>
   </div>
- 
+
 </body>
 </html>
- 
