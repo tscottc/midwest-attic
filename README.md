@@ -1,6 +1,6 @@
-# Soft Stack Studio
+# Midwest Attic
 
-Landing page for Soft Stack Studio — friendly websites for small businesses.
+Landing page for Midwest Attic — web design, online presence, and custom tools for small businesses. A DBA of Space Junk Studios, based in Detroit & Southeastern Michigan.
 
 Deployed via Firebase Hosting to **https://midwest-attic.web.app**.
 
