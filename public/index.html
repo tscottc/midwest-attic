@@ -5,18 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Midwest Attic — Digital Relations</title>
 <meta name="description" content="Web design, online presence, and custom tools for small businesses. Midwest Attic is the web and code development arm of Space Junk Studios, based in Detroit & Southeastern Michigan.">
+<meta name="theme-color" content="#5E817A">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Midwest Attic — Digital Relations">
+<meta property="og:description" content="Web design, online presence, and custom tools for small businesses in Detroit & Southeastern Michigan. One person does the work, start to finish.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Midwest Attic — Digital Relations">
+<meta name="twitter:description" content="Custom web design and online presence work for small businesses, built by hand — not from a kit.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235E817A'/%3E%3Cpath d='M14 34 L32 16 L50 34' fill='none' stroke='%23DCD3C0' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='20' y='34' width='24' height='16' rx='2' fill='none' stroke='%23DCD3C0' stroke-width='5'/%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --sage:#A8B59A;
+    --sage-light:#C7D0BB;
     --sage-deep:#7C8A6E;
+    --sage-deeper:#5F6C53;
     --clay:#C9A48A;
+    --clay-light:#E4CBB8;
     --clay-deep:#B5896B;
     --teal:#8FB0A9;
+    --teal-light:#B7CFC9;
     --teal-deep:#5E817A;
     --sand:#DCD3C0;
+    --sand-light:#EFE9DC;
     --slate:#8A93A1;
     --ink:#3E4438;
     --ink-soft:#5E6557;
@@ -26,6 +42,11 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
 
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  }
+
   body{
     font-family:'Nunito',system-ui,sans-serif;
     color:var(--ink);
@@ -34,167 +55,386 @@
     flex-direction:column;
     background-color:#cfd6c2;
     background-image:
-      repeating-linear-gradient(0deg,rgba(110,125,98,.10) 0 1px,transparent 1px 22px),
-      repeating-linear-gradient(90deg,rgba(110,125,98,.10) 0 1px,transparent 1px 22px),
-      repeating-linear-gradient(0deg,rgba(110,125,98,.06) 0 1px,transparent 1px 66px),
-      repeating-linear-gradient(90deg,rgba(110,125,98,.06) 0 1px,transparent 1px 66px);
+      radial-gradient(circle at 1px 1px, rgba(110,125,98,.14) 1px, transparent 1.4px),
+      repeating-linear-gradient(0deg,rgba(110,125,98,.05) 0 1px,transparent 1px 66px),
+      repeating-linear-gradient(90deg,rgba(110,125,98,.05) 0 1px,transparent 1px 66px);
+    background-size:22px 22px, 66px 66px, 66px 66px;
+    overflow-x:hidden;
   }
+
+  ::selection{background:var(--clay-deep);color:#fff}
 
   /* full-bleed bands: each .band spans the whole width, inner wrapper centers content */
-  .band{width:100%}
+  .band{width:100%;position:relative}
   .wrap{max-width:1180px;margin:0 auto;padding-left:clamp(20px,5vw,56px);padding-right:clamp(20px,5vw,56px)}
 
+  section[id]{scroll-margin-top:88px}
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in-view{opacity:1;transform:translateY(0)}
+  .reveal-stagger.in-view > *{animation:none}
+
   /* HEADER */
-  .band-head{background:var(--sage-deep);color:#fff}
-  .band-head .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px}
+  .band-head{
+    background:rgba(95,108,83,.88);
+    color:#fff;
+    position:sticky;top:0;z-index:100;
+    backdrop-filter:blur(10px) saturate(140%);
+    -webkit-backdrop-filter:blur(10px) saturate(140%);
+    transition:box-shadow .25s ease, background-color .25s ease;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .band-head.scrolled{background:rgba(76,88,66,.96);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  .band-head .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
   .brand{display:flex;align-items:center;gap:13px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.4rem;color:#fff;text-decoration:none}
   .mark{
-    width:44px;height:44px;border-radius:12px;
+    width:44px;height:44px;border-radius:12px;flex:none;
     background:var(--sand);color:var(--ink);box-shadow:inset 0 0 0 2px rgba(62,68,56,.12);
-    display:grid;place-items:center;font-size:1.4rem;
+    display:grid;place-items:center;
+    transition:transform .3s ease;
   }
+  .brand:hover .mark{transform:rotate(-8deg) scale(1.06)}
+  .mark svg{width:24px;height:24px}
   .brand small{display:block;font-family:'Nunito',sans-serif;font-weight:600;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;opacity:.8;margin-top:2px}
-  nav{display:flex;gap:28px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem}
-  nav a{color:rgba(255,255,255,.82);text-decoration:none;transition:color .2s}
-  nav a:hover{color:#fff}
+
+  nav.site-nav{display:flex;align-items:center;gap:28px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem}
+  nav.site-nav a{color:rgba(255,255,255,.82);text-decoration:none;transition:color .2s;position:relative;padding-bottom:2px}
+  nav.site-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;background:var(--sand);transition:right .25s ease}
+  nav.site-nav a:hover{color:#fff}
+  nav.site-nav a:hover::after{right:0}
+  .nav-cta{
+    font-family:'Fredoka',sans-serif;font-weight:600;font-size:.9rem;color:var(--ink) !important;
+    background:var(--sand);padding:10px 20px;border-radius:100px;transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .nav-cta::after{display:none}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.2);color:var(--ink) !important}
+
+  .burger{
+    display:none;width:42px;height:42px;border-radius:10px;border:none;background:rgba(255,255,255,.12);
+    cursor:pointer;position:relative;flex:none;
+  }
+  .burger span, .burger span::before, .burger span::after{
+    content:"";position:absolute;left:10px;right:10px;height:2px;background:#fff;border-radius:2px;transition:transform .25s ease, opacity .25s ease, top .25s ease;
+  }
+  .burger span{top:20px}
+  .burger span::before{top:-7px}
+  .burger span::after{top:7px}
+  .burger.open span{background:transparent}
+  .burger.open span::before{top:0;transform:rotate(45deg)}
+  .burger.open span::after{top:0;transform:rotate(-45deg)}
+
+  .mobile-panel{
+    display:none;flex-direction:column;gap:2px;
+    background:rgba(76,88,66,.98);backdrop-filter:blur(10px);
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+  }
+  .mobile-panel.open{max-height:320px}
+  .mobile-panel a{
+    color:#fff;text-decoration:none;font-family:'Fredoka',sans-serif;font-weight:600;
+    padding:16px clamp(20px,5vw,56px);border-top:1px solid rgba(255,255,255,.08);
+  }
 
   /* HERO band — wide, edge to edge */
-  .band-hero{background:var(--teal)}
+  .band-hero{
+    background:linear-gradient(155deg, var(--teal) 0%, var(--teal-deep) 68%, var(--sage-deeper) 100%);
+    overflow:hidden;
+  }
   .band-hero .wrap{
     display:flex;align-items:center;justify-content:space-between;gap:40px;
-    padding-top:clamp(40px,7vw,72px);padding-bottom:clamp(40px,7vw,72px);
+    padding-top:clamp(52px,8vw,88px);padding-bottom:clamp(52px,8vw,88px);
+    position:relative;z-index:2;
   }
-  .hero-copy{flex:1 1 460px;color:#fff}
+  .hero-copy{flex:1 1 480px;color:#fff}
   .eyebrow{
-    display:inline-block;font-family:'Fredoka',sans-serif;font-weight:600;
-    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
-    background:rgba(255,255,255,.22);color:#fff;padding:8px 18px;border-radius:100px;margin-bottom:22px;
+    display:inline-flex;align-items:center;gap:8px;font-family:'Fredoka',sans-serif;font-weight:600;
+    font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+    background:rgba(255,255,255,.2);color:#fff;padding:9px 18px 9px 14px;border-radius:100px;margin-bottom:24px;
+    border:1px solid rgba(255,255,255,.28);
   }
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--clay-light);animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
   h1{
     font-family:'Fredoka',sans-serif;font-weight:700;color:#fff;
-    font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:18px;
+    font-size:clamp(2.3rem,5.2vw,3.8rem);line-height:1.06;letter-spacing:-.01em;margin-bottom:20px;
   }
-  h1 .pop{color:var(--sand)}
-  .sub{font-size:clamp(1.02rem,2.2vw,1.22rem);color:rgba(255,255,255,.92);max-width:520px;margin-bottom:30px;line-height:1.6}
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  h1 .pop{
+    background:linear-gradient(100deg, var(--sand) 0%, var(--clay-light) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    position:relative;
+  }
+  .sub{font-size:clamp(1.04rem,2.2vw,1.24rem);color:rgba(255,255,255,.94);max-width:520px;margin-bottom:32px;line-height:1.65}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
   .btn{
     font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;
-    padding:14px 30px;border-radius:100px;text-decoration:none;cursor:pointer;border:none;
-    transition:transform .15s ease,box-shadow .2s ease;
+    padding:15px 32px;border-radius:100px;text-decoration:none;cursor:pointer;border:none;
+    transition:transform .15s ease,box-shadow .2s ease;display:inline-flex;align-items:center;gap:8px;
   }
-  .btn-primary{background:var(--clay-deep);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.14)}
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.2)}
-  .btn-ghost{background:var(--card);color:var(--ink)}
-  .btn-ghost:hover{transform:translateY(-3px)}
+  .btn-primary{background:var(--clay-deep);color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.2)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.26)}
+  .btn-ghost{background:rgba(255,255,255,.94);color:var(--ink)}
+  .btn-ghost:hover{transform:translateY(-3px);background:#fff}
+  .btn svg{width:18px;height:18px;transition:transform .2s ease}
+  .btn-primary:hover svg{transform:translateX(3px)}
+
+  .hero-trust{display:flex;align-items:center;gap:10px;font-size:.88rem;color:rgba(255,255,255,.82);font-weight:600}
+  .hero-trust svg{width:16px;height:16px;flex:none}
 
   /* hero art block */
+  .hero-art-wrap{flex:0 0 320px;height:320px;position:relative;display:grid;place-items:center}
+  .blob{position:absolute;border-radius:42% 58% 63% 37% / 41% 44% 56% 59%;filter:blur(1px)}
+  .blob-1{width:260px;height:260px;background:rgba(255,255,255,.12);animation:float1 9s ease-in-out infinite}
+  .blob-2{width:190px;height:190px;background:rgba(220,211,192,.22);animation:float2 11s ease-in-out infinite}
+  @keyframes float1{0%,100%{transform:rotate(0deg) translate(0,0)}50%{transform:rotate(18deg) translate(6px,-10px)}}
+  @keyframes float2{0%,100%{transform:rotate(0deg) translate(0,0)}50%{transform:rotate(-14deg) translate(-8px,8px)}}
   .hero-art{
-    flex:0 0 280px;height:240px;border-radius:24px;
-    background:var(--card);box-shadow:0 16px 40px rgba(0,0,0,.16);
-    display:grid;place-items:center;
+    width:230px;height:210px;border-radius:24px;
+    background:var(--card);box-shadow:0 20px 46px rgba(0,0,0,.22);
+    display:grid;place-items:center;position:relative;z-index:2;
+    animation:bob 5s ease-in-out infinite;
   }
-  .hero-art .glyph{font-size:5rem;color:var(--teal-deep);font-family:'Fredoka',sans-serif;font-weight:700}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .hero-art svg{width:104px;height:104px;color:var(--teal-deep)}
+  .hero-spark{position:absolute;color:var(--sand);z-index:2}
+  .spark-a{top:6%;right:12%;width:22px;height:22px;animation:spin 7s linear infinite}
+  .spark-b{bottom:10%;left:2%;width:16px;height:16px;animation:spin 5s linear infinite reverse}
+  @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 
   /* STRIP band */
-  .band-strip{background:var(--sage-deep);color:#fff}
-  .band-strip .wrap{padding-top:18px;padding-bottom:18px;font-size:.95rem;font-weight:600;line-height:1.6}
+  .band-strip{background:var(--sage-deep);color:#fff;overflow:hidden}
+  .band-strip .wrap{
+    padding-top:16px;padding-bottom:16px;font-size:.95rem;font-weight:600;line-height:1.6;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;text-align:center;
+  }
+  .band-strip svg{width:18px;height:18px;flex:none;color:var(--sand)}
 
   /* SERVICES band */
   .band-serv{background:var(--sand)}
-  .band-serv .wrap{padding-top:clamp(40px,6vw,60px);padding-bottom:clamp(40px,6vw,60px)}
-  .serv-head{text-align:center;font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:10px}
-  .serv-sub{text-align:center;font-size:.97rem;color:var(--ink-soft);margin-bottom:34px}
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .card{
-    background:var(--card);border-radius:20px;padding:26px 24px;
-    border:1px solid rgba(124,138,110,.2);transition:transform .2s ease;
+  .band-serv .wrap{padding-top:clamp(50px,7vw,76px);padding-bottom:clamp(50px,7vw,76px)}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 40px}
+  .kicker{
+    display:inline-block;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.78rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:10px;
   }
-  .card:hover{transform:translateY(-5px)}
-  .card .ico{font-size:1.8rem;margin-bottom:10px;display:block;color:var(--sage-deep)}
-  .card h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.15rem;margin-bottom:6px}
-  .card p{font-size:.95rem;color:var(--ink-soft);line-height:1.55}
+  .serv-head{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:12px}
+  .serv-sub{font-size:.99rem;color:var(--ink-soft);line-height:1.6}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--card);border-radius:20px;padding:30px 26px;
+    border:1px solid rgba(124,138,110,.18);transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    position:relative;overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0;opacity:0;transition:opacity .25s ease;
+    background:linear-gradient(160deg, rgba(143,176,169,.12), transparent 60%);
+  }
+  .card:hover{transform:translateY(-7px);box-shadow:0 20px 36px rgba(62,68,56,.14);border-color:rgba(124,138,110,.4)}
+  .card:hover::before{opacity:1}
+  .card .ico-wrap{
+    width:52px;height:52px;border-radius:14px;background:var(--sage-light);
+    display:grid;place-items:center;margin-bottom:16px;color:var(--sage-deeper);
+    transition:transform .3s ease, background .3s ease;
+  }
+  .card:hover .ico-wrap{transform:rotate(-6deg) scale(1.05);background:var(--teal-light)}
+  .card .ico-wrap svg{width:26px;height:26px}
+  .card h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.18rem;margin-bottom:8px}
+  .card p{font-size:.96rem;color:var(--ink-soft);line-height:1.6}
+
+  /* PROCESS band */
+  .band-process{background:var(--card)}
+  .band-process .wrap{padding-top:clamp(50px,7vw,76px);padding-bottom:clamp(50px,7vw,76px)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step;position:relative}
+  .steps::before{
+    content:"";position:absolute;top:26px;left:12.5%;right:12.5%;height:2px;
+    background:repeating-linear-gradient(90deg, var(--sage) 0 10px, transparent 10px 18px);
+    z-index:0;
+  }
+  .step{position:relative;z-index:1;text-align:center;padding:0 6px}
+  .step-num{
+    width:52px;height:52px;border-radius:50%;background:var(--teal-deep);color:#fff;
+    display:grid;place-items:center;margin:0 auto 16px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.15rem;
+    box-shadow:0 8px 18px rgba(94,129,122,.35);border:4px solid var(--card);
+    transition:transform .25s ease;
+  }
+  .step:hover .step-num{transform:scale(1.1) rotate(-6deg)}
+  .step h4{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:8px}
+  .step p{font-size:.9rem;color:var(--ink-soft);line-height:1.55}
 
   /* ABOUT band */
-  .band-about{background:var(--card)}
-  .band-about .wrap{padding-top:clamp(40px,6vw,60px);padding-bottom:clamp(40px,6vw,60px);max-width:760px}
-  .about-name{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem;letter-spacing:.04em;color:var(--sage-deep);margin-bottom:10px}
-  .about-bio{font-size:1.02rem;color:var(--ink-soft);line-height:1.7}
+  .band-about{background:var(--sand-light)}
+  .band-about .wrap{padding-top:clamp(50px,7vw,76px);padding-bottom:clamp(50px,7vw,76px)}
+  .about-grid{display:flex;gap:48px;align-items:flex-start}
+  .about-portrait{
+    flex:0 0 168px;width:168px;height:168px;border-radius:50%;
+    background:linear-gradient(150deg, var(--teal) 0%, var(--sage-deep) 100%);
+    display:grid;place-items:center;color:#fff;font-family:'Fredoka',sans-serif;font-weight:700;font-size:2.6rem;
+    box-shadow:0 16px 34px rgba(62,68,56,.18);border:6px solid var(--card);
+  }
+  .about-copy{flex:1 1 480px;max-width:700px}
+  .about-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.3rem;color:var(--ink);margin-bottom:4px}
+  .about-role{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.04em;color:var(--teal-deep);margin-bottom:14px}
+  .about-bio{font-size:1.02rem;color:var(--ink-soft);line-height:1.75;margin-bottom:18px}
+  .about-tags{display:flex;gap:8px;flex-wrap:wrap}
+  .about-tags span{
+    background:var(--card);border:1px solid rgba(124,138,110,.25);color:var(--ink-soft);
+    font-size:.82rem;font-weight:700;padding:6px 14px;border-radius:100px;
+  }
+
+  /* CTA band */
+  .band-cta{background:var(--clay-deep);color:#fff;overflow:hidden;position:relative}
+  .band-cta::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 85% 20%, rgba(255,255,255,.16), transparent 55%);
+  }
+  .band-cta .wrap{
+    padding-top:clamp(48px,7vw,72px);padding-bottom:clamp(48px,7vw,72px);
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;z-index:1;
+  }
+  .cta-head h2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(1.5rem,3.2vw,2rem);margin-bottom:8px}
+  .cta-head p{font-size:1rem;color:rgba(255,255,255,.9);max-width:420px}
+  .band-cta .btn-ghost:hover{background:var(--sand)}
 
   /* FOOTER band */
-  .band-foot{background:var(--clay);color:#fff;margin-top:auto}
-  .band-foot .wrap{
-    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
-    padding-top:24px;padding-bottom:24px;font-size:.9rem;
+  .band-foot{background:var(--sage-deeper);color:#fff;margin-top:auto}
+  .band-foot .wrap{padding-top:clamp(40px,5vw,56px);padding-bottom:24px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.14)}
+  .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .foot-brand-row .mark{width:38px;height:38px}
+  .foot-brand-row .mark svg{width:20px;height:20px}
+  .foot-brand{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.15rem}
+  .foot-dba{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-bottom:14px}
+  .foot-desc{font-size:.92rem;line-height:1.65;opacity:.85;max-width:340px}
+  .foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-bottom:14px}
+  .foot-col a, .foot-col span{display:block;color:rgba(255,255,255,.88);text-decoration:none;font-size:.94rem;margin-bottom:10px;transition:opacity .2s ease}
+  .foot-col a:hover{opacity:.7;text-decoration:underline}
+  .foot-bottom{
+    padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    font-size:.85rem;opacity:.75;
   }
-  .band-foot a{color:#fff;text-decoration:underline;font-weight:700}
-  .foot-brand{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:2px}
-  .foot-dba{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:8px}
-  .foot-note{font-size:.85rem;opacity:.8;text-align:right}
+  .to-top{
+    background:rgba(255,255,255,.12);border:none;color:#fff;width:38px;height:38px;border-radius:10px;
+    cursor:pointer;display:grid;place-items:center;transition:transform .2s ease, background .2s ease;
+  }
+  .to-top:hover{background:rgba(255,255,255,.22);transform:translateY(-3px)}
+  .to-top svg{width:18px;height:18px}
+
+  @media (max-width:900px){
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-desc{max-width:none}
+  }
 
   @media (max-width:780px){
-    nav{display:none}
+    nav.site-nav{display:none}
+    .burger{display:block}
+    .mobile-panel{display:flex}
     .band-hero .wrap{flex-direction:column;text-align:center}
     .hero-copy{flex-basis:auto}
     .cta-row{justify-content:center}
-    .hero-art{flex-basis:auto;width:100%;max-width:280px}
-    .foot-note{text-align:left}
-  }
-  @media (max-width:600px){
+    .hero-trust{justify-content:center}
+    .hero-art-wrap{flex-basis:auto;width:100%;max-width:280px;height:280px}
     .cards{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr;row-gap:32px}
+    .steps::before{display:none}
+    .about-grid{flex-direction:column;align-items:center;text-align:center}
+    .about-tags{justify-content:center}
+    .band-cta .wrap{justify-content:center;text-align:center}
+    .foot-grid{grid-template-columns:1fr}
+    .foot-bottom{justify-content:center;text-align:center}
+  }
+  @media (max-width:480px){
+    .steps{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
 
-  <div class="band band-head">
+  <div class="band band-head" id="siteHeader">
     <div class="wrap">
-      <a class="brand" href="#"><span class="mark">&#9635;</span><span>Midwest Attic<small>Digital Relations</small></span></a>
-      <nav>
+      <a class="brand" href="#top">
+        <span class="mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 L12 4 L20 11"/><rect x="7" y="11" width="10" height="8" rx="0.5"/><path d="M10 19 v-4 h4 v4"/></svg>
+        </span>
+        <span>Midwest Attic<small>Digital Relations</small></span>
+      </a>
+      <nav class="site-nav">
         <a href="#work">Work</a>
+        <a href="#process">Process</a>
         <a href="#about">About</a>
-        <a href="#hello">Get in touch</a>
+        <a class="nav-cta" href="#hello">Get in touch</a>
       </nav>
+      <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#hello">Get in touch</a>
     </div>
   </div>
 
-  <div class="band band-hero">
+  <div class="band band-hero" id="top">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">Web design &amp; online presence &mdash; Detroit &amp; Southeastern Michigan</span>
+        <span class="eyebrow"><span class="dot"></span>Web design &amp; online presence &mdash; Detroit &amp; Southeastern Michigan</span>
         <h1>Look like <span class="pop">yourself</span> on the internet.</h1>
         <p class="sub">Your business shouldn't look like it was assembled from a kit. Midwest Attic builds web presence that fits — custom to who you actually are, built by one person who sees the work through.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#hello">Start a conversation</a>
+          <a class="btn btn-primary" href="#hello">Start a conversation
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
           <a class="btn btn-ghost" href="#work">What I do</a>
         </div>
+        <div class="hero-trust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          One person, start to finish — no hand-offs, no subcontractors.
+        </div>
       </div>
-      <div class="hero-art"><span class="glyph">&#9635;</span></div>
+      <div class="hero-art-wrap">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <svg class="hero-spark spark-a" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/></svg>
+        <svg class="hero-spark spark-b" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+        <div class="hero-art">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/><circle cx="9" cy="6.5" r=".6" fill="currentColor" stroke="none"/><path d="M7 14l2.5-2.5L12 14l4-4"/></svg>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="band band-strip">
     <div class="wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
       One person does the work. Nobody to hand you off to, nobody to blame things on. You'll always know exactly who's on your project.
     </div>
   </div>
 
   <div class="band band-serv" id="work">
     <div class="wrap">
-      <h2 class="serv-head">What I do</h2>
-      <p class="serv-sub">Online presence work for small businesses and individuals. Not a package. Not a template. Not a rush job.</p>
+      <div class="section-head reveal">
+        <span class="kicker">What I do</span>
+        <h2 class="serv-head">Online presence, done properly</h2>
+        <p class="serv-sub">Work for small businesses and individuals. Not a package. Not a template. Not a rush job.</p>
+      </div>
       <div class="cards">
-        <div class="card">
-          <span class="ico">&#9638;</span>
+        <div class="card reveal">
+          <div class="ico-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.2h.01M10 6.2h.01"/></svg>
+          </div>
           <h3>Web Design</h3>
           <p>Sites built from scratch around what you actually need. Fast, clean, mobile-ready — and nothing that screams "free theme."</p>
         </div>
-        <div class="card">
-          <span class="ico">&#9881;</span>
+        <div class="card reveal">
+          <div class="ico-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+          </div>
           <h3>Online Presence</h3>
           <p>Getting found matters. So does what people find when they look. I work on both — search, profiles, listings, the whole picture.</p>
         </div>
-        <div class="card">
-          <span class="ico">&#9776;</span>
+        <div class="card reveal">
+          <div class="ico-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 1 5.4-5.4L15 12l-3-3 2.7-2.7Z"/></svg>
+          </div>
           <h3>Ongoing Care</h3>
           <p>Sites drift, things break, and needs grow. I stay around after launch — updates, hosting, analytics, and custom tools when the work calls for it: employee hubs, inventory and scanning apps, staff directories with FAQ and feedback built in.</p>
         </div>
@@ -202,24 +442,153 @@
     </div>
   </div>
 
+  <div class="band band-process" id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">How it works</span>
+        <h2 class="serv-head">Four steps, no mystery</h2>
+        <p class="serv-sub">A straightforward process, so you always know what happens next.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <h4>Say hello</h4>
+          <p>A real conversation about what you need and what's not working right now.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <h4>Plan it out</h4>
+          <p>Scope, timeline, and cost laid out plainly before anything gets built.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <h4>Build &amp; refine</h4>
+          <p>Hands-on development with check-ins along the way — no surprise reveals.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <h4>Launch &amp; support</h4>
+          <p>Go live, then stick around for updates, hosting, and whatever comes next.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="band band-about" id="about">
     <div class="wrap">
-      <h2 class="serv-head">Who's behind it</h2>
-      <div class="about-name">Tyler S. Claus</div>
-      <p class="about-bio">Self-taught, with coursework in Information Systems still in progress. Most of the work so far has been freelance — a handful of small-business clients around Metro Detroit, each one built by hand instead of templated. I'm still finding exactly where I want to plant my flag in this field, and that's fine by me. Midwest Attic is the web and code development arm of Space Junk Studios, a small multidisciplinary outfit that also covers editorial &amp; satire publishing (Motorcity Mouth) and photography.</p>
+      <div class="section-head reveal" style="margin-bottom:36px">
+        <span class="kicker">Who's behind it</span>
+        <h2 class="serv-head">A name and a face, not a call center</h2>
+      </div>
+      <div class="about-grid reveal">
+        <div class="about-portrait">TC</div>
+        <div class="about-copy">
+          <div class="about-name">Tyler S. Claus</div>
+          <div class="about-role">FOUNDER &amp; DEVELOPER, MIDWEST ATTIC</div>
+          <p class="about-bio">Self-taught, with coursework in Information Systems still in progress. Most of the work so far has been freelance — a handful of small-business clients around Metro Detroit, each one built by hand instead of templated. I'm still finding exactly where I want to plant my flag in this field, and that's fine by me. Midwest Attic is the web and code development arm of Space Junk Studios, a small multidisciplinary outfit that also covers editorial &amp; satire publishing (Motorcity Mouth) and photography.</p>
+          <div class="about-tags">
+            <span>Self-taught</span>
+            <span>Metro Detroit</span>
+            <span>Small business focus</span>
+            <span>Space Junk Studios</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band band-cta">
+    <div class="wrap">
+      <div class="cta-head reveal">
+        <h2>Got a project taking shape?</h2>
+        <p>Tell me what's not working about your current setup, or what you wish you had. No obligation, no sales script.</p>
+      </div>
+      <a class="btn btn-ghost reveal" href="#hello">Say hello
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </div>
 
   <div class="band band-foot" id="hello">
     <div class="wrap">
-      <div>
-        <div class="foot-brand">Midwest Attic</div>
-        <div class="foot-dba">A DBA of Space Junk Studios &mdash; Detroit &amp; Southeastern Michigan</div>
-        <span>Ready to talk? <a href="mailto:info@midwestattic.com">info@midwestattic.com</a></span>
+      <div class="foot-grid">
+        <div>
+          <div class="foot-brand-row">
+            <span class="mark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 L12 4 L20 11"/><rect x="7" y="11" width="10" height="8" rx="0.5"/><path d="M10 19 v-4 h4 v4"/></svg>
+            </span>
+            <div>
+              <div class="foot-brand">Midwest Attic</div>
+            </div>
+          </div>
+          <div class="foot-dba">A DBA of Space Junk Studios</div>
+          <p class="foot-desc">Web design, online presence, and custom tools for small businesses — Detroit &amp; Southeastern Michigan.</p>
+        </div>
+        <div class="foot-col">
+          <h5>Site</h5>
+          <a href="#work">Work</a>
+          <a href="#process">Process</a>
+          <a href="#about">About</a>
+        </div>
+        <div class="foot-col">
+          <h5>Get in touch</h5>
+          <a href="mailto:info@midwestattic.com">info@midwestattic.com</a>
+          <span>Detroit &amp; Southeastern Michigan</span>
+        </div>
       </div>
-      <div class="foot-note">Real work.<br>One person.<br>No drama.</div>
+      <div class="foot-bottom">
+        <span>&copy; <span id="year"></span> Midwest Attic. Real work. One person. No drama.</span>
+        <button class="to-top" id="toTop" aria-label="Back to top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </button>
+      </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var header = document.getElementById('siteHeader');
+    var toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', function(){
+      var scrolled = window.scrollY > 12;
+      header.classList.toggle('scrolled', scrolled);
+      toTop.style.opacity = window.scrollY > 400 ? '1' : '.55';
+    }, {passive:true});
+
+    toTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    var burger = document.getElementById('burgerBtn');
+    var panel = document.getElementById('mobilePanel');
+    burger.addEventListener('click', function(){
+      var open = panel.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    panel.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        panel.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting){
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        });
+      }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); });
+    }
+  </script>
 
 </body>
 </html>
