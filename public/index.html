@@ -3,40 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Midwest Attic — Digital Relations</title>
-<meta name="description" content="Web design, online presence, and custom tools for small businesses. Midwest Attic is the web and code development arm of Space Junk Studios, based in Detroit & Southeastern Michigan.">
-<meta name="theme-color" content="#5E817A">
+<title>Midwest Attic — Web Design &amp; Online Presence</title>
+<meta name="description" content="Custom web design and online presence for small businesses in Detroit & Southeastern Michigan. No templates, no agency runaround — built and run by one developer, start to finish.">
+<meta name="theme-color" content="#14161A">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Midwest Attic — Digital Relations">
-<meta property="og:description" content="Web design, online presence, and custom tools for small businesses in Detroit & Southeastern Michigan. One person does the work, start to finish.">
+<meta property="og:title" content="Midwest Attic — Web Design &amp; Online Presence">
+<meta property="og:description" content="Custom web presence for small businesses in Detroit & Southeastern Michigan. No templates, no hand-offs.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Midwest Attic — Digital Relations">
-<meta name="twitter:description" content="Custom web design and online presence work for small businesses, built by hand — not from a kit.">
+<meta name="twitter:title" content="Midwest Attic — Web Design &amp; Online Presence">
+<meta name="twitter:description" content="Custom web presence for small businesses in Detroit & Southeastern Michigan. No templates, no hand-offs.">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235E817A'/%3E%3Cpath d='M14 34 L32 16 L50 34' fill='none' stroke='%23DCD3C0' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='20' y='34' width='24' height='16' rx='2' fill='none' stroke='%23DCD3C0' stroke-width='5'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314161A'/%3E%3Cpath d='M14 34 L32 16 L50 34' fill='none' stroke='%23D98E2B' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='20' y='34' width='24' height='16' rx='2' fill='none' stroke='%23F2F0EB' stroke-width='5'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sage:#A8B59A;
-    --sage-light:#C7D0BB;
-    --sage-deep:#7C8A6E;
-    --sage-deeper:#5F6C53;
-    --clay:#C9A48A;
-    --clay-light:#E4CBB8;
-    --clay-deep:#B5896B;
-    --teal:#8FB0A9;
-    --teal-light:#B7CFC9;
-    --teal-deep:#5E817A;
-    --sand:#DCD3C0;
-    --sand-light:#EFE9DC;
-    --slate:#8A93A1;
-    --ink:#3E4438;
-    --ink-soft:#5E6557;
-    --card:#FBF8F1;
+    --bg:#14161A;
+    --bg-raised:#1D2025;
+    --bg-raised-2:#262A31;
+    --cream:#F2F0EB;
+    --cream-soft:#B8B6AE;
+    --cream-faint:#84837E;
+    --amber:#D98E2B;
+    --amber-bright:#F0A83D;
+    --amber-deep:#B9721B;
+    --amber-soft:rgba(217,142,43,.14);
+    --border:rgba(242,240,235,.1);
+    --border-strong:rgba(242,240,235,.2);
+    --ink:#14161A;
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
@@ -49,73 +46,68 @@
 
   body{
     font-family:'Nunito',system-ui,sans-serif;
-    color:var(--ink);
+    color:var(--cream);
     min-height:100vh;
     display:flex;
     flex-direction:column;
-    background-color:#cfd6c2;
+    background-color:var(--bg);
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(110,125,98,.14) 1px, transparent 1.4px),
-      repeating-linear-gradient(0deg,rgba(110,125,98,.05) 0 1px,transparent 1px 66px),
-      repeating-linear-gradient(90deg,rgba(110,125,98,.05) 0 1px,transparent 1px 66px);
-    background-size:22px 22px, 66px 66px, 66px 66px;
+      radial-gradient(circle at 1px 1px, rgba(242,240,235,.07) 1px, transparent 1.4px);
+    background-size:26px 26px;
     overflow-x:hidden;
   }
 
-  ::selection{background:var(--clay-deep);color:#fff}
+  ::selection{background:var(--amber);color:var(--ink)}
 
-  /* full-bleed bands: each .band spans the whole width, inner wrapper centers content */
   .band{width:100%;position:relative}
   .wrap{max-width:1180px;margin:0 auto;padding-left:clamp(20px,5vw,56px);padding-right:clamp(20px,5vw,56px)}
 
   section[id]{scroll-margin-top:88px}
 
-  /* reveal-on-scroll */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
   .reveal.in-view{opacity:1;transform:translateY(0)}
-  .reveal-stagger.in-view > *{animation:none}
 
   /* HEADER */
   .band-head{
-    background:rgba(95,108,83,.88);
-    color:#fff;
+    background:rgba(20,22,26,.82);
+    color:var(--cream);
     position:sticky;top:0;z-index:100;
     backdrop-filter:blur(10px) saturate(140%);
     -webkit-backdrop-filter:blur(10px) saturate(140%);
-    transition:box-shadow .25s ease, background-color .25s ease;
-    border-bottom:1px solid rgba(255,255,255,.08);
+    transition:box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
+    border-bottom:1px solid transparent;
   }
-  .band-head.scrolled{background:rgba(76,88,66,.96);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  .band-head.scrolled{background:rgba(15,17,20,.96);box-shadow:0 8px 24px rgba(0,0,0,.35);border-bottom-color:var(--border)}
   .band-head .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
-  .brand{display:flex;align-items:center;gap:13px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.4rem;color:#fff;text-decoration:none}
+  .brand{display:flex;align-items:center;gap:13px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.4rem;color:var(--cream);text-decoration:none}
   .mark{
     width:44px;height:44px;border-radius:12px;flex:none;
-    background:var(--sand);color:var(--ink);box-shadow:inset 0 0 0 2px rgba(62,68,56,.12);
+    background:var(--amber);color:var(--ink);
     display:grid;place-items:center;
     transition:transform .3s ease;
   }
   .brand:hover .mark{transform:rotate(-8deg) scale(1.06)}
   .mark svg{width:24px;height:24px}
-  .brand small{display:block;font-family:'Nunito',sans-serif;font-weight:600;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;opacity:.8;margin-top:2px}
+  .brand small{display:block;font-family:'Nunito',sans-serif;font-weight:600;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;opacity:.6;margin-top:2px}
 
   nav.site-nav{display:flex;align-items:center;gap:28px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem}
-  nav.site-nav a{color:rgba(255,255,255,.82);text-decoration:none;transition:color .2s;position:relative;padding-bottom:2px}
-  nav.site-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;background:var(--sand);transition:right .25s ease}
-  nav.site-nav a:hover{color:#fff}
+  nav.site-nav a{color:rgba(242,240,235,.72);text-decoration:none;transition:color .2s;position:relative;padding-bottom:2px}
+  nav.site-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;background:var(--amber);transition:right .25s ease}
+  nav.site-nav a:hover{color:var(--cream)}
   nav.site-nav a:hover::after{right:0}
   .nav-cta{
     font-family:'Fredoka',sans-serif;font-weight:600;font-size:.9rem;color:var(--ink) !important;
-    background:var(--sand);padding:10px 20px;border-radius:100px;transition:transform .2s ease,box-shadow .2s ease;
+    background:var(--amber);padding:10px 20px;border-radius:100px;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
   }
   .nav-cta::after{display:none}
-  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.2);color:var(--ink) !important}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(217,142,43,.35);background:var(--amber-bright);color:var(--ink) !important}
 
   .burger{
-    display:none;width:42px;height:42px;border-radius:10px;border:none;background:rgba(255,255,255,.12);
+    display:none;width:42px;height:42px;border-radius:10px;border:none;background:rgba(242,240,235,.08);
     cursor:pointer;position:relative;flex:none;
   }
   .burger span, .burger span::before, .burger span::after{
-    content:"";position:absolute;left:10px;right:10px;height:2px;background:#fff;border-radius:2px;transition:transform .25s ease, opacity .25s ease, top .25s ease;
+    content:"";position:absolute;left:10px;right:10px;height:2px;background:var(--cream);border-radius:2px;transition:transform .25s ease, opacity .25s ease, top .25s ease;
   }
   .burger span{top:20px}
   .burger span::before{top:-7px}
@@ -126,197 +118,184 @@
 
   .mobile-panel{
     display:none;flex-direction:column;gap:2px;
-    background:rgba(76,88,66,.98);backdrop-filter:blur(10px);
+    background:rgba(15,17,20,.98);backdrop-filter:blur(10px);
     max-height:0;overflow:hidden;transition:max-height .3s ease;
   }
   .mobile-panel.open{max-height:320px}
   .mobile-panel a{
-    color:#fff;text-decoration:none;font-family:'Fredoka',sans-serif;font-weight:600;
-    padding:16px clamp(20px,5vw,56px);border-top:1px solid rgba(255,255,255,.08);
+    color:var(--cream);text-decoration:none;font-family:'Fredoka',sans-serif;font-weight:600;
+    padding:16px clamp(20px,5vw,56px);border-top:1px solid var(--border);
   }
 
-  /* HERO band — wide, edge to edge */
-  .band-hero{
-    background:linear-gradient(155deg, var(--teal) 0%, var(--teal-deep) 68%, var(--sage-deeper) 100%);
-    overflow:hidden;
-  }
+  /* HERO */
+  .band-hero{overflow:hidden}
   .band-hero .wrap{
     display:flex;align-items:center;justify-content:space-between;gap:40px;
-    padding-top:clamp(52px,8vw,88px);padding-bottom:clamp(52px,8vw,88px);
+    padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(56px,8vw,96px);
     position:relative;z-index:2;
   }
-  .hero-copy{flex:1 1 480px;color:#fff}
+  .hero-copy{flex:1 1 480px}
   .eyebrow{
     display:inline-flex;align-items:center;gap:8px;font-family:'Fredoka',sans-serif;font-weight:600;
     font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
-    background:rgba(255,255,255,.2);color:#fff;padding:9px 18px 9px 14px;border-radius:100px;margin-bottom:24px;
-    border:1px solid rgba(255,255,255,.28);
+    background:var(--amber-soft);color:var(--amber-bright);padding:9px 18px 9px 14px;border-radius:100px;margin-bottom:26px;
+    border:1px solid rgba(217,142,43,.3);
   }
-  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--clay-light);animation:pulse 2.2s ease-in-out infinite}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);animation:pulse 2.2s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
   h1{
-    font-family:'Fredoka',sans-serif;font-weight:700;color:#fff;
-    font-size:clamp(2.3rem,5.2vw,3.8rem);line-height:1.06;letter-spacing:-.01em;margin-bottom:20px;
+    font-family:'Fredoka',sans-serif;font-weight:700;color:var(--cream);
+    font-size:clamp(2.3rem,5.2vw,3.9rem);line-height:1.05;letter-spacing:-.01em;margin-bottom:22px;
   }
-  h1 .pop{
-    background:linear-gradient(100deg, var(--sand) 0%, var(--clay-light) 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    position:relative;
-  }
-  .sub{font-size:clamp(1.04rem,2.2vw,1.24rem);color:rgba(255,255,255,.94);max-width:520px;margin-bottom:32px;line-height:1.65}
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+  h1 .pop{color:var(--amber-bright)}
+  .sub{font-size:clamp(1.04rem,2.2vw,1.24rem);color:var(--cream-soft);max-width:540px;margin-bottom:34px;line-height:1.65}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
   .btn{
     font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;
-    padding:15px 32px;border-radius:100px;text-decoration:none;cursor:pointer;border:none;
-    transition:transform .15s ease,box-shadow .2s ease;display:inline-flex;align-items:center;gap:8px;
+    padding:15px 32px;border-radius:100px;text-decoration:none;cursor:pointer;border:1px solid transparent;
+    transition:transform .15s ease,box-shadow .2s ease,background .2s ease;display:inline-flex;align-items:center;gap:8px;
   }
-  .btn-primary{background:var(--clay-deep);color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.2)}
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.26)}
-  .btn-ghost{background:rgba(255,255,255,.94);color:var(--ink)}
-  .btn-ghost:hover{transform:translateY(-3px);background:#fff}
+  .btn-primary{background:var(--amber);color:var(--ink);box-shadow:0 10px 24px rgba(217,142,43,.25)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(217,142,43,.35);background:var(--amber-bright)}
+  .btn-ghost{background:transparent;color:var(--cream);border-color:var(--border-strong)}
+  .btn-ghost:hover{transform:translateY(-3px);border-color:var(--amber);color:var(--amber-bright)}
   .btn svg{width:18px;height:18px;transition:transform .2s ease}
   .btn-primary:hover svg{transform:translateX(3px)}
 
-  .hero-trust{display:flex;align-items:center;gap:10px;font-size:.88rem;color:rgba(255,255,255,.82);font-weight:600}
-  .hero-trust svg{width:16px;height:16px;flex:none}
+  .hero-trust{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--cream-faint);font-weight:600}
+  .hero-trust svg{width:16px;height:16px;flex:none;color:var(--amber)}
 
-  /* hero art block */
+  /* hero art */
   .hero-art-wrap{flex:0 0 320px;height:320px;position:relative;display:grid;place-items:center}
-  .blob{position:absolute;border-radius:42% 58% 63% 37% / 41% 44% 56% 59%;filter:blur(1px)}
-  .blob-1{width:260px;height:260px;background:rgba(255,255,255,.12);animation:float1 9s ease-in-out infinite}
-  .blob-2{width:190px;height:190px;background:rgba(220,211,192,.22);animation:float2 11s ease-in-out infinite}
-  @keyframes float1{0%,100%{transform:rotate(0deg) translate(0,0)}50%{transform:rotate(18deg) translate(6px,-10px)}}
-  @keyframes float2{0%,100%{transform:rotate(0deg) translate(0,0)}50%{transform:rotate(-14deg) translate(-8px,8px)}}
+  .hero-glow{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle, rgba(217,142,43,.25) 0%, rgba(217,142,43,0) 70%)}
+  .hero-ring{position:absolute;border-radius:50%;border:1.5px dashed var(--border-strong)}
+  .ring-1{width:270px;height:270px;animation:spin 26s linear infinite}
+  .ring-2{width:220px;height:220px;border-style:solid;border-color:var(--border)}
   .hero-art{
-    width:230px;height:210px;border-radius:24px;
-    background:var(--card);box-shadow:0 20px 46px rgba(0,0,0,.22);
+    width:200px;height:190px;border-radius:20px;
+    background:var(--bg-raised);box-shadow:0 24px 50px rgba(0,0,0,.5);
     display:grid;place-items:center;position:relative;z-index:2;
+    border:1px solid var(--border-strong);
     animation:bob 5s ease-in-out infinite;
   }
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-  .hero-art svg{width:104px;height:104px;color:var(--teal-deep)}
-  .hero-spark{position:absolute;color:var(--sand);z-index:2}
-  .spark-a{top:6%;right:12%;width:22px;height:22px;animation:spin 7s linear infinite}
-  .spark-b{bottom:10%;left:2%;width:16px;height:16px;animation:spin 5s linear infinite reverse}
   @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  .hero-art svg{width:96px;height:96px;color:var(--amber)}
+  .hero-spark{position:absolute;color:var(--amber);z-index:2}
+  .spark-a{top:4%;right:10%;width:20px;height:20px;animation:spin 8s linear infinite}
+  .spark-b{bottom:8%;left:0;width:14px;height:14px;animation:pulse 2.4s ease-in-out infinite}
 
-  /* STRIP band */
-  .band-strip{background:var(--sage-deep);color:#fff;overflow:hidden}
+  /* STRIP */
+  .band-strip{background:var(--bg-raised);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
   .band-strip .wrap{
-    padding-top:16px;padding-bottom:16px;font-size:.95rem;font-weight:600;line-height:1.6;
+    padding-top:18px;padding-bottom:18px;font-size:.95rem;font-weight:600;line-height:1.6;color:var(--cream-soft);
     display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;text-align:center;
   }
-  .band-strip svg{width:18px;height:18px;flex:none;color:var(--sand)}
+  .band-strip svg{width:18px;height:18px;flex:none;color:var(--amber)}
 
-  /* SERVICES band */
-  .band-serv{background:var(--sand)}
-  .band-serv .wrap{padding-top:clamp(50px,7vw,76px);padding-bottom:clamp(50px,7vw,76px)}
-  .section-head{text-align:center;max-width:640px;margin:0 auto 40px}
+  /* SERVICES */
+  .band-serv .wrap{padding-top:clamp(56px,7vw,84px);padding-bottom:clamp(56px,7vw,84px)}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 44px}
   .kicker{
     display:inline-block;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.78rem;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:10px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;
   }
-  .serv-head{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:12px}
-  .serv-sub{font-size:.99rem;color:var(--ink-soft);line-height:1.6}
+  .serv-head{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:12px;color:var(--cream)}
+  .serv-sub{font-size:.99rem;color:var(--cream-soft);line-height:1.6}
 
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .card{
-    background:var(--card);border-radius:20px;padding:30px 26px;
-    border:1px solid rgba(124,138,110,.18);transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    background:var(--bg-raised);border-radius:18px;padding:30px 26px;
+    border:1px solid var(--border);transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     position:relative;overflow:hidden;
   }
-  .card::before{
-    content:"";position:absolute;inset:0;opacity:0;transition:opacity .25s ease;
-    background:linear-gradient(160deg, rgba(143,176,169,.12), transparent 60%);
-  }
-  .card:hover{transform:translateY(-7px);box-shadow:0 20px 36px rgba(62,68,56,.14);border-color:rgba(124,138,110,.4)}
-  .card:hover::before{opacity:1}
+  .card:hover{transform:translateY(-7px);box-shadow:0 20px 40px rgba(0,0,0,.4);border-color:rgba(217,142,43,.4)}
   .card .ico-wrap{
-    width:52px;height:52px;border-radius:14px;background:var(--sage-light);
-    display:grid;place-items:center;margin-bottom:16px;color:var(--sage-deeper);
+    width:52px;height:52px;border-radius:13px;background:var(--amber-soft);
+    display:grid;place-items:center;margin-bottom:18px;color:var(--amber);
     transition:transform .3s ease, background .3s ease;
   }
-  .card:hover .ico-wrap{transform:rotate(-6deg) scale(1.05);background:var(--teal-light)}
+  .card:hover .ico-wrap{transform:rotate(-6deg) scale(1.05);background:var(--amber);color:var(--ink)}
   .card .ico-wrap svg{width:26px;height:26px}
-  .card h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.18rem;margin-bottom:8px}
-  .card p{font-size:.96rem;color:var(--ink-soft);line-height:1.6}
+  .card h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.18rem;margin-bottom:9px;color:var(--cream)}
+  .card p{font-size:.96rem;color:var(--cream-soft);line-height:1.6}
 
-  /* PROCESS band */
-  .band-process{background:var(--card)}
-  .band-process .wrap{padding-top:clamp(50px,7vw,76px);padding-bottom:clamp(50px,7vw,76px)}
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step;position:relative}
+  /* PROCESS */
+  .band-process{background:var(--bg-raised);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .band-process .wrap{padding-top:clamp(56px,7vw,84px);padding-bottom:clamp(56px,7vw,84px)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
   .steps::before{
-    content:"";position:absolute;top:26px;left:12.5%;right:12.5%;height:2px;
-    background:repeating-linear-gradient(90deg, var(--sage) 0 10px, transparent 10px 18px);
+    content:"";position:absolute;top:26px;left:12.5%;right:12.5%;height:1px;
+    background:repeating-linear-gradient(90deg, var(--border-strong) 0 10px, transparent 10px 18px);
     z-index:0;
   }
   .step{position:relative;z-index:1;text-align:center;padding:0 6px}
   .step-num{
-    width:52px;height:52px;border-radius:50%;background:var(--teal-deep);color:#fff;
-    display:grid;place-items:center;margin:0 auto 16px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.15rem;
-    box-shadow:0 8px 18px rgba(94,129,122,.35);border:4px solid var(--card);
+    width:52px;height:52px;border-radius:50%;background:var(--amber);color:var(--ink);
+    display:grid;place-items:center;margin:0 auto 18px;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.15rem;
+    box-shadow:0 8px 20px rgba(217,142,43,.3);border:4px solid var(--bg-raised);
     transition:transform .25s ease;
   }
   .step:hover .step-num{transform:scale(1.1) rotate(-6deg)}
-  .step h4{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:8px}
-  .step p{font-size:.9rem;color:var(--ink-soft);line-height:1.55}
+  .step h4{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:8px;color:var(--cream)}
+  .step p{font-size:.9rem;color:var(--cream-soft);line-height:1.55}
 
-  /* ABOUT band */
-  .band-about{background:var(--sand-light)}
-  .band-about .wrap{padding-top:clamp(50px,7vw,76px);padding-bottom:clamp(50px,7vw,76px)}
+  /* ABOUT */
+  .band-about .wrap{padding-top:clamp(56px,7vw,84px);padding-bottom:clamp(56px,7vw,84px)}
   .about-grid{display:flex;gap:48px;align-items:flex-start}
   .about-portrait{
     flex:0 0 168px;width:168px;height:168px;border-radius:50%;
-    background:linear-gradient(150deg, var(--teal) 0%, var(--sage-deep) 100%);
-    display:grid;place-items:center;color:#fff;font-family:'Fredoka',sans-serif;font-weight:700;font-size:2.6rem;
-    box-shadow:0 16px 34px rgba(62,68,56,.18);border:6px solid var(--card);
+    background:var(--bg-raised);
+    display:grid;place-items:center;color:var(--amber);font-family:'Fredoka',sans-serif;font-weight:700;font-size:2.6rem;
+    border:1px solid var(--border-strong);
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
   }
   .about-copy{flex:1 1 480px;max-width:700px}
-  .about-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.3rem;color:var(--ink);margin-bottom:4px}
-  .about-role{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.04em;color:var(--teal-deep);margin-bottom:14px}
-  .about-bio{font-size:1.02rem;color:var(--ink-soft);line-height:1.75;margin-bottom:18px}
+  .about-name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.3rem;color:var(--cream);margin-bottom:4px}
+  .about-role{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.04em;color:var(--amber);margin-bottom:16px}
+  .about-bio{font-size:1.02rem;color:var(--cream-soft);line-height:1.75;margin-bottom:20px}
   .about-tags{display:flex;gap:8px;flex-wrap:wrap}
   .about-tags span{
-    background:var(--card);border:1px solid rgba(124,138,110,.25);color:var(--ink-soft);
+    background:var(--bg-raised);border:1px solid var(--border-strong);color:var(--cream-soft);
     font-size:.82rem;font-weight:700;padding:6px 14px;border-radius:100px;
   }
 
-  /* CTA band */
-  .band-cta{background:var(--clay-deep);color:#fff;overflow:hidden;position:relative}
+  /* CTA */
+  .band-cta{background:var(--amber);color:var(--ink);overflow:hidden;position:relative}
   .band-cta::before{
     content:"";position:absolute;inset:0;
-    background:radial-gradient(circle at 85% 20%, rgba(255,255,255,.16), transparent 55%);
+    background:radial-gradient(circle at 85% 20%, rgba(255,255,255,.25), transparent 55%);
   }
   .band-cta .wrap{
     padding-top:clamp(48px,7vw,72px);padding-bottom:clamp(48px,7vw,72px);
     display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;z-index:1;
   }
   .cta-head h2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:clamp(1.5rem,3.2vw,2rem);margin-bottom:8px}
-  .cta-head p{font-size:1rem;color:rgba(255,255,255,.9);max-width:420px}
-  .band-cta .btn-ghost:hover{background:var(--sand)}
+  .cta-head p{font-size:1rem;color:rgba(20,22,26,.78);max-width:420px}
+  .band-cta .btn-ghost{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .band-cta .btn-ghost:hover{background:#000;transform:translateY(-3px)}
 
-  /* FOOTER band */
-  .band-foot{background:var(--sage-deeper);color:#fff;margin-top:auto}
+  /* FOOTER */
+  .band-foot{background:#0F1013;color:var(--cream);margin-top:auto;border-top:1px solid var(--border)}
   .band-foot .wrap{padding-top:clamp(40px,5vw,56px);padding-bottom:24px}
-  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.14)}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:32px;padding-bottom:32px;border-bottom:1px solid var(--border)}
   .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
   .foot-brand-row .mark{width:38px;height:38px}
   .foot-brand-row .mark svg{width:20px;height:20px}
   .foot-brand{font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.15rem}
-  .foot-dba{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-bottom:14px}
-  .foot-desc{font-size:.92rem;line-height:1.65;opacity:.85;max-width:340px}
-  .foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-bottom:14px}
-  .foot-col a, .foot-col span{display:block;color:rgba(255,255,255,.88);text-decoration:none;font-size:.94rem;margin-bottom:10px;transition:opacity .2s ease}
-  .foot-col a:hover{opacity:.7;text-decoration:underline}
+  .foot-desc{font-size:.92rem;line-height:1.65;color:var(--cream-soft);max-width:340px}
+  .foot-col h5{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cream-faint);margin-bottom:14px}
+  .foot-col a, .foot-col span{display:block;color:var(--cream-soft);text-decoration:none;font-size:.94rem;margin-bottom:10px;transition:color .2s ease}
+  .foot-col a:hover{color:var(--amber-bright)}
   .foot-bottom{
     padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
-    font-size:.85rem;opacity:.75;
+    font-size:.82rem;color:var(--cream-faint);
   }
   .to-top{
-    background:rgba(255,255,255,.12);border:none;color:#fff;width:38px;height:38px;border-radius:10px;
-    cursor:pointer;display:grid;place-items:center;transition:transform .2s ease, background .2s ease;
+    background:var(--bg-raised);border:1px solid var(--border-strong);color:var(--cream);width:38px;height:38px;border-radius:10px;
+    cursor:pointer;display:grid;place-items:center;transition:transform .2s ease, border-color .2s ease;
   }
-  .to-top:hover{background:rgba(255,255,255,.22);transform:translateY(-3px)}
+  .to-top:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-3px)}
   .to-top svg{width:18px;height:18px}
 
   @media (max-width:900px){
@@ -361,7 +340,7 @@
         <a href="#work">Work</a>
         <a href="#process">Process</a>
         <a href="#about">About</a>
-        <a class="nav-cta" href="#hello">Get in touch</a>
+        <a class="nav-cta" href="#hello">Start a project</a>
       </nav>
       <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     </div>
@@ -369,30 +348,31 @@
       <a href="#work">Work</a>
       <a href="#process">Process</a>
       <a href="#about">About</a>
-      <a href="#hello">Get in touch</a>
+      <a href="#hello">Start a project</a>
     </div>
   </div>
 
   <div class="band band-hero" id="top">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow"><span class="dot"></span>Web design &amp; online presence &mdash; Detroit &amp; Southeastern Michigan</span>
-        <h1>Look like <span class="pop">yourself</span> on the internet.</h1>
-        <p class="sub">Your business shouldn't look like it was assembled from a kit. Midwest Attic builds web presence that fits — custom to who you actually are, built by one person who sees the work through.</p>
+        <span class="eyebrow"><span class="dot"></span>Detroit &amp; Southeastern Michigan</span>
+        <h1>Web presence that <span class="pop">actually represents you.</span></h1>
+        <p class="sub">Small businesses hire Midwest Attic to build sites that fit — not a template with your logo dropped in. Custom-built, mobile-ready, and handled by one developer from first conversation to launch and beyond.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#hello">Start a conversation
+          <a class="btn btn-primary" href="#hello">Start a project
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn-ghost" href="#work">What I do</a>
+          <a class="btn btn-ghost" href="#work">See the work</a>
         </div>
         <div class="hero-trust">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          One person, start to finish — no hand-offs, no subcontractors.
+          No templates. No hand-offs. No subcontractors.
         </div>
       </div>
       <div class="hero-art-wrap">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-ring ring-1"></div>
+        <div class="hero-ring ring-2"></div>
         <svg class="hero-spark spark-a" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/></svg>
         <svg class="hero-spark spark-b" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
         <div class="hero-art">
@@ -405,7 +385,7 @@
   <div class="band band-strip">
     <div class="wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-      One person does the work. Nobody to hand you off to, nobody to blame things on. You'll always know exactly who's on your project.
+      One person does the work. No hand-offs, no subcontractors, no mystery about who's on your project.
     </div>
   </div>
 
@@ -414,7 +394,7 @@
       <div class="section-head reveal">
         <span class="kicker">What I do</span>
         <h2 class="serv-head">Online presence, done properly</h2>
-        <p class="serv-sub">Work for small businesses and individuals. Not a package. Not a template. Not a rush job.</p>
+        <p class="serv-sub">Work for small businesses and individuals. Custom-built, not templated — and built to last past launch day.</p>
       </div>
       <div class="cards">
         <div class="card reveal">
@@ -422,21 +402,21 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.2h.01M10 6.2h.01"/></svg>
           </div>
           <h3>Web Design</h3>
-          <p>Sites built from scratch around what you actually need. Fast, clean, mobile-ready — and nothing that screams "free theme."</p>
+          <p>Every site is built from scratch around what your business actually needs — fast, clean, mobile-first, and nothing that looks like a $20 theme.</p>
         </div>
         <div class="card reveal">
           <div class="ico-wrap">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
           </div>
           <h3>Online Presence</h3>
-          <p>Getting found matters. So does what people find when they look. I work on both — search, profiles, listings, the whole picture.</p>
+          <p>Search visibility, listings, and profiles handled alongside the site itself, so what people find actually matches what you offer.</p>
         </div>
         <div class="card reveal">
           <div class="ico-wrap">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 1 5.4-5.4L15 12l-3-3 2.7-2.7Z"/></svg>
           </div>
           <h3>Ongoing Care</h3>
-          <p>Sites drift, things break, and needs grow. I stay around after launch — updates, hosting, analytics, and custom tools when the work calls for it: employee hubs, inventory and scanning apps, staff directories with FAQ and feedback built in.</p>
+          <p>Support that doesn't disappear at launch — updates, hosting, analytics, and custom tools when the work calls for it: employee hubs, inventory systems, staff directories built to fit.</p>
         </div>
       </div>
     </div>
@@ -453,12 +433,12 @@
         <div class="step reveal">
           <div class="step-num">1</div>
           <h4>Say hello</h4>
-          <p>A real conversation about what you need and what's not working right now.</p>
+          <p>A direct conversation about what's not working and what you actually need.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">2</div>
-          <h4>Plan it out</h4>
-          <p>Scope, timeline, and cost laid out plainly before anything gets built.</p>
+          <h4>Scope it</h4>
+          <p>Cost, timeline, and deliverables laid out plainly before any work starts.</p>
         </div>
         <div class="step reveal">
           <div class="step-num">3</div>
@@ -468,7 +448,7 @@
         <div class="step reveal">
           <div class="step-num">4</div>
           <h4>Launch &amp; support</h4>
-          <p>Go live, then stick around for updates, hosting, and whatever comes next.</p>
+          <p>Go live, then stay covered for updates, hosting, and whatever comes next.</p>
         </div>
       </div>
     </div>
@@ -485,12 +465,11 @@
         <div class="about-copy">
           <div class="about-name">Tyler S. Claus</div>
           <div class="about-role">FOUNDER &amp; DEVELOPER, MIDWEST ATTIC</div>
-          <p class="about-bio">Self-taught, with coursework in Information Systems still in progress. Most of the work so far has been freelance — a handful of small-business clients around Metro Detroit, each one built by hand instead of templated. I'm still finding exactly where I want to plant my flag in this field, and that's fine by me. Midwest Attic is the web and code development arm of Space Junk Studios, a small multidisciplinary outfit that also covers editorial &amp; satire publishing (Motorcity Mouth) and photography.</p>
+          <p class="about-bio">Midwest Attic is run by one developer, working directly with a small roster of Metro Detroit businesses on sites built by hand instead of assembled from a template. Every project — from the first conversation to launch and everything after — runs through the same person: no account managers, no outsourced dev work, no hand-offs partway through. Background in Information Systems, applied directly to the work.</p>
           <div class="about-tags">
-            <span>Self-taught</span>
             <span>Metro Detroit</span>
-            <span>Small business focus</span>
-            <span>Space Junk Studios</span>
+            <span>Custom-built, not templated</span>
+            <span>Direct client relationships</span>
           </div>
         </div>
       </div>
@@ -500,10 +479,10 @@
   <div class="band band-cta">
     <div class="wrap">
       <div class="cta-head reveal">
-        <h2>Got a project taking shape?</h2>
+        <h2>Ready to build something that's actually yours?</h2>
         <p>Tell me what's not working about your current setup, or what you wish you had. No obligation, no sales script.</p>
       </div>
-      <a class="btn btn-ghost reveal" href="#hello">Say hello
+      <a class="btn btn-ghost reveal" href="#hello">Get in touch
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
@@ -521,7 +500,6 @@
               <div class="foot-brand">Midwest Attic</div>
             </div>
           </div>
-          <div class="foot-dba">A DBA of Space Junk Studios</div>
           <p class="foot-desc">Web design, online presence, and custom tools for small businesses — Detroit &amp; Southeastern Michigan.</p>
         </div>
         <div class="foot-col">
@@ -537,7 +515,7 @@
         </div>
       </div>
       <div class="foot-bottom">
-        <span>&copy; <span id="year"></span> Midwest Attic. Real work. One person. No drama.</span>
+        <span>&copy; <span id="year"></span> Midwest Attic, a DBA of Space Junk Studios. Real work. One person. No drama.</span>
         <button class="to-top" id="toTop" aria-label="Back to top">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
         </button>
